@@ -1,8 +1,7 @@
 FROM python:2.7-alpine
 
 ENV LANG='en_AU.UTF-8' \
-    LANGUAGE='en_AU.UTF-8' \
-    SICKGEAR_VERSION='0.12.23'
+    LANGUAGE='en_AU.UTF-8'
 
 RUN apk -U upgrade && \
     apk add --no-cache \
@@ -24,17 +23,13 @@ RUN apk -U upgrade && \
       lxml && \
 \
     adduser -u 1001 -S media -G users && \
-    mkdir /data /tvseries /incoming && \
+    mkdir /data /tvseries && \
     chown -R media:users /data /tvseries /incoming && \
 \
-    mkdir /sickgear && \
-    wget https://github.com/SickGear/SickGear/archive/release_${SICKGEAR_VERSION}.tar.gz && \
-    tar -xf release_${SICKGEAR_VERSION}.tar.gz --strip 1 -C /sickgear && \
-    chown -R media:users /sickgear && \
+   git clone --depth=1 https://github.com/SickGear/SickGear && \
+   chown -R media:users /sickgear && \
 \
     pip install --no-cache-dir -r /sickgear/requirements.txt && \
-\
-    rm ./release_${SICKGEAR_VERSION}.tar.gz && \
 \
     apk del \
       gcc \
@@ -47,6 +42,6 @@ EXPOSE 8081
 
 USER media
 
-VOLUME ["/data", "/tvseries", "/incoming"]
+VOLUME ["/data", "/tvseries"]
 
 CMD ["/usr/local/bin/python", "/sickgear/SickBeard.py", "--datadir", "/data", "--config", "/data/config.ini"]
