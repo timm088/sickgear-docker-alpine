@@ -26,7 +26,7 @@ RUN apk -U upgrade && \
     mkdir /data /tvseries && \
     chown -R media:users /data /tvseries && \
 \
-   git clone --depth=1 https://github.com/SickGear/SickGear && \
+   git clone --depth=1 https://github.com/SickGear/SickGear /sickgear && \
    chown -R media:users /sickgear && \
 \
     pip install --no-cache-dir -r /sickgear/requirements.txt && \
