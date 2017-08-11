@@ -24,7 +24,7 @@ RUN apk -U upgrade && \
 \
     adduser -u 1001 -S media -G users && \
     mkdir /data /tvseries && \
-    chown -R media:users /data /tvseries /incoming && \
+    chown -R media:users /data /tvseries && \
 \
    git clone --depth=1 https://github.com/SickGear/SickGear && \
    chown -R media:users /sickgear && \
