@@ -1,8 +1,5 @@
 FROM python:2.7-alpine
 
-ENV LANG='en_AU.UTF-8' \
-    LANGUAGE='en_AU.UTF-8'
-
 RUN apk -U upgrade && \
     apk add --no-cache \
       ca-certificates \
