@@ -22,3 +22,4 @@ To run the docker container ensure your run command has the required volumes you
 - 09-06-18: Bump to alpine 3.7
 - 23-12-18: Bump to alpine 3.8
 - 28-04-19: Bump to alpine 3.9
+- 07-07-19: Bump to alpine 3.10
